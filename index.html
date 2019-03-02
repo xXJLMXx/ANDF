@@ -5,10 +5,10 @@
   <body>
     <a-scene>
           <a-assets>
-            <a-entity gltf-model="url(scene.gltf)" scale="0.2 0.2 0.2">
+            <a-entity id="tree" gltf-model="url(scene.gltf)" scale="0.2 0.2 0.2">
           </a-assets>
 
-      
+       <a-entity gltf-model="#tree"></a-entity>
     </a-scene>
   </body>
 </html>
