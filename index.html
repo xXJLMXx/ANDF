@@ -22,6 +22,7 @@
           mesh.material.colorWrite = false
         },
       })
+
       // This component hides and shows certain elements as the camera moves
       AFRAME.registerComponent('portal', {
         schema: {
@@ -40,19 +41,24 @@
         },
         tick: function() {
           const position = this.camera.object3D.position
+
           const isOutside = position.z  > this.data.depth / 2
           const withinPortalBounds =
             position.y < this.data.height && Math.abs(position.x) < this.data.width / 2
+
           if (this.wasOutside != isOutside && withinPortalBounds) {
             this.isInPortalSpace = !isOutside
           }
+
           this.contents.object3D.visible = this.isInPortalSpace || isOutside
           this.walls.object3D.visible = !this.isInPortalSpace && isOutside
           this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
           this.portalWorld.object3D.visible = this.isInPortalSpace
+
           this.wasOutside = isOutside
         }
       })
+
     </script>
 
   </head>
